@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archive | SI</title>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9773017729831801" crossorigin="anonymous"></script>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      min-height: 100vh;
+      width: 100%;
+      margin: 0;
+      background-color: black;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .motw-text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #55CC25;
+      text-shadow: 0 0 2px #55CC25, 0 0 4px #55CC25;
+      margin-top: 20px;
+      text-align: center;
+    }
+    .motw-text a {
+      color: #55CC25;
+      font-size: 2rem;
+      font-weight: bold;
+      text-decoration: underline;
+      text-shadow: 0 0 10px #55CC25, 0 0 2px #55CC25;
+    }
+    .motw-text a:hover {
+      color: #fff;
+      text-shadow: 0 0 15px #55CC25, 0 0 20px #55CC25;
+    }
+    .form-container {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .form-container input {
+      padding: 10px;
+      font-size: 1.2rem;
+      background-color: #222;
+      color: #55CC25;
+      border: 1px solid #55CC25;
+      border-radius: 5px;
+    }
+    .form-container button {
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background-color: #55CC25;
+      color: black;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <p class="motw-text"><a href="https://craz.top/" target="_blank">Go to the main website</a></p>
+  <p class="motw-text">Due to the possibilities of blackmail, this database is protected.</p>
+  <div class="form-container">
+    <form id="answerForm">
+      <input type="text" id="answer" name="answer" required>
+      <button type="submit">Check</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('answerForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const answer = document.getElementById('answer').value;
+      const data = JSON.stringify({ answer });
+      
+      try {
+        const response = await fetch('https://chesao-worker.stilla-rrms-wlwv-k12-or-us.workers.dev/', {
+          method: 'POST',
+          headers: { "Content-Type": "application/json" },
+          body: data
+        });
+
+        const result = await response.json();
+
+        if (result.success && result.redirect) {
+          window.location.href = result.redirect;
+        } else {
+          alert(result.message || 'Wrong!');
+        }
+      } catch (error) {
+        alert('Server error. Try again later (Takes about 1-2 days to fix).');
+      }
+    });
+  </script>
+  
+  <p class="motw-text">If you don't know what you're doing here, then simply close the tab.</p>
+</body>
+</html>
